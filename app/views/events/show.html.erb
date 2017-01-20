@@ -1,3 +1,14 @@
-<%= @event.title %>
+Event title: <%= @event.title %>
+<br>
+Images: <%= link_to @image.title, image_path(@image) %>
+<br>
+<%= link_to 'Edit Event', edit_event_path(@event) %>
+<br>
+<%= link_to "Delete Event", @event, method: :delete %>
 
-<%= link_to @image.title, image_path(@image) %>
+<br></br>
+- displays options for event
+<br>
+- displays option to view users
+<br>
+- displays option to invite more users to view event
