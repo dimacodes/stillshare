@@ -14,7 +14,7 @@ User:
     - sign up > enter name, email, password
 
 * After signin/signup
-    - displays users page
+    - displays users page (event options)
         - displays events
 
 * User clicks on Event

@@ -1,5 +1,21 @@
 <%= @image.title %>
 <br></br>
+<%= link_to image_tag @image.image.thumb.url %>
+
+
+<%= link_to "Delete Image", @image, method: :delete %>
+<br></br>
+
+<% @image.comments.each do |comment| %>
+  <%= comment.content %>
+<% end %>
+
+<%= link_to "Add Comment", new_image_comment_path(@image, @image.comments.build) %><br><br>
+
+<%= link_to "Add Tag", new_image_tag_path(@image, @image.tags.build) %><br><br>
+
+
+
 - displays image options
 <br>
 - displays comments

@@ -1,0 +1,6 @@
+<%= form_for @tag do |f| %>
+<%= f.label "Tag" %>
+<%= f.text_field :content %>
+<%= f.hidden_field :image_id, :value => params[:image_id].to_i %>
+<%= f.submit %>
+<% end %>

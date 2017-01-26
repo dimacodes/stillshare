@@ -7,7 +7,9 @@ def make_seeds
 end
 
 def make_users
-  ["Amanda", "Katie","Arel","Logan","Tristan","Ari"].each {|name| User.create(name: name)}
+  ["Amanda", "Katie","Arel","Logan","Tristan","Ari"].each do |name|
+    User.create(name: name)
+  end
 end
 
 def make_events

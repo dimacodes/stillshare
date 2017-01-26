@@ -1,35 +1,52 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.all
+    if params[:user_id]
+      @events = Event.find(params[:user_id]).events
+    else
+      @events = Event.all
+    end
   end
 
   def new
-    @event = Event.new
+    @event = Event.new(user_id: params[:user_id])
   end
 
   def create
-    @event = Event.create(event_params)
-    redirect_to event_path(@event)
+    @event = current_user.events.create(event_params)
+    if @event.save
+      redirect_to event_path(@event)
+    end
   end
 
   def show
     @event = Event.find_by(id: params[:id])
-    @image = Image.find_by(id: params[:id])
+    # @image = Image.find_by(id: params[:id])
+    @images = @event.images
   end
 
   def edit
+    @event = Event.find_by(id: params[:id])
   end
 
   def update
+    @event = Event.find_by(id: params[:id])
+    if @event.update(event_params)
+      redirect_to event_path(@event)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @event = Event.find_by(id: params[:id])
+    @event.destroy
+    redirect_to user_path(current_user)
   end
 
   private
 
   def event_params
-    params.require(:event).permit(:title, :date, :description)
+    params.require(:event).permit(:title, :date, :description, :user_id, :image)
   end
 end
