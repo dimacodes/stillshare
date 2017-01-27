@@ -1,4 +1,10 @@
 Tag: <%= @tag.content %>
+Images with this tag:
+<% @images.each do |image| %>
+<%= image.title %>
+<img src=<%=image.image.thumb %> />
+<% end %>
+
 <br></br>
 <%= link_to "Delete Tag", @tag, method: :delete, data: {confirm: "Are you sure?"}  %>
 <br></br>

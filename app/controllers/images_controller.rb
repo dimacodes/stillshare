@@ -12,12 +12,12 @@ class ImagesController < ApplicationController
   def create
     # @image = current_user.events.images.create(image_params)
     # @event = Event.find_by(params[:event_id])
-    @image = Image.create(image_params)
+    @image = Image.new(image_params)
     # byebug
     if @image.save
       redirect_to event_path(@image.event), notice: "#{@image.title} has been added."
     else
-      render :new 
+      render :new
     end
   end
 

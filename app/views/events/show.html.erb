@@ -23,6 +23,6 @@ Most Commented Image:<br>
 Image Tags:<br>
 <% @images.each do |image| %>
   <% image.tags.each do |tag| %>
-    <%= link_to tag.content, event_image_path(image.event, image) %>
+    <%= link_to tag.content, tag_path(tag) %>
 <% end %>
 <% end %>
