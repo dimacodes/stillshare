@@ -11,9 +11,10 @@ class TagsController < ApplicationController
   def create
     tag = Tag.new(tag_params)
     image = Image.find_by(id: params[:tag][:image_id])
+    # event = image.event.id
     if tag.save
     image_tag = ImageTag.create(tag: tag, image: image)
-      redirect_to tags_path
+      redirect_to image_path(image), notice: "#{tag.content} has been added."
     end
   end
 
@@ -31,7 +32,12 @@ class TagsController < ApplicationController
   def update
   end
 
-  def delete
+  def destroy
+    # @image = @tag.images
+    @tag = Tag.find_by(id: params[:id])
+    # byebug
+		@tag.destroy
+    # "/images/#{@tag.image.id}"
   end
 
   private
@@ -39,6 +45,5 @@ class TagsController < ApplicationController
   def tag_params
     # byebug
     params.require(:tag).permit(:content)
-
   end
 end

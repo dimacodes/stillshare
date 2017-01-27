@@ -1,3 +1,7 @@
+TO DO:
+
+add user_id to comments
+
 User:
 
 * User visits the Homepage

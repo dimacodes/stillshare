@@ -1,15 +1,23 @@
-Welcome
-<%= @user.name %>!
+<%= @user.name %> Profile
 <br></br>
-Your Events:
-<br>
-<% @events.each do |event| %>
-  <%= link_to event.title, event_path(event) %><br>
+
+<% if @events.empty? %>
+  You don't have any events yet.
+<% else %>
+
+Events:
+  <br>
+  <% @events.each do |event| %>
+    <%= link_to event.title, event_path(event) %><br>
+  <% end %>
 <% end %>
-<br></br>
+
+<br>
 <!-- <%= link_to "See Events", events_path(@user) %> -->
 <%= link_to "Create New Event", new_event_path %>
 <br>
 <%= link_to "Edit Your Profile", edit_user_path(@user) %>
+<br>
+<%= link_to "View All Users", users_path %>
 <br>
 <%= link_to "Log Out", signout_path, :method => :delete %>

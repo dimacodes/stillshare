@@ -2,5 +2,6 @@
 <%= f.label "Comment" %>
 <%= f.text_field :content %>
 <%= f.hidden_field :image_id, :value => params[:image_id].to_i %>
+<%= f.hidden_field :user_id, :value => params[:user_id].to_i %>
 <%= f.submit %>
 <% end %>

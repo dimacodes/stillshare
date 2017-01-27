@@ -1,8 +1,8 @@
 Event Title: <%= @event.title %>
-<br>
+<br></br>
 <%= link_to 'Edit Event', edit_event_path(@event) %>
 <br>
-<%= link_to "Delete Event", @event, method: :delete %>
+<%= link_to "Delete Event", @event, method: :delete, data: {confirm: "Are you sure?"}  %>
 <br>
 <%= link_to "Add Image/s to Event", new_event_image_path(@event) %>
 <br>
@@ -11,19 +11,18 @@ Event Title: <%= @event.title %>
 
 Images: <br>
 <% @images.each do |image| %>
-  <%= link_to image.title, event_image_path(image.event, image) if @images %>
-
+  <%= link_to image.title, event_image_path(image.event, image) if @images %><br>
+  <%= link_to image_tag image.image.thumb.url %>
 <% end %>
-<br>
-
-
-
-
 
 <br></br>
-- displays options for event
-<br>
-- displays option to view users
-<%= link_to "View ", new_event_image_path(@event) %>
-<br>
-- displays option to invite more users to view event
+Most Commented Image:<br>
+<%= Image.most_commented.title %>
+
+<br></br>
+Image Tags:<br>
+<% @images.each do |image| %>
+  <% image.tags.each do |tag| %>
+    <%= link_to tag.content, event_image_path(image.event, image) %>
+<% end %>
+<% end %>

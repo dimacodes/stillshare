@@ -15,15 +15,15 @@ class ImagesController < ApplicationController
     @image = Image.create(image_params)
     # byebug
     if @image.save
-      redirect_to event_path(@image.event)
+      redirect_to event_path(@image.event), notice: "#{@image.title} has been added."
     else
-      render :new
+      render :new 
     end
   end
 
   def show
-    @image = Image.find_by(id: params[:id])
     @event = Event.find_by(id: params[:event_id])
+    @image = Image.find_by(id: params[:id])
     @comment = Comment.new
   end
 
@@ -34,7 +34,7 @@ class ImagesController < ApplicationController
   def update
     @image = Image.find_by(id: params[:id])
     if @image.update(image_params)
-      redirect_to event_image_path(@image)
+      redirect_to event_image_path(@image), notice: "#{@image.title} has been updated."
     else
       render :edit
     end
@@ -44,7 +44,7 @@ class ImagesController < ApplicationController
     @event = Event.find_by(id: params[:id])
     @image = Image.find_by(id: params[:id])
 		@image.destroy
-		redirect_to event_path(@image.event)
+		redirect_to event_path(@image.event), notice: "#{@image.title} has been deleted."
   end
 
   private
