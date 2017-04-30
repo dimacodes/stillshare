@@ -17,7 +17,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to event_path(@event), notice: "#{@event.title} has been added."
     else
-      render :new 
+      render :new
     end
   end
 
