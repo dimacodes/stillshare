@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     @events = Event.all
     # @user.created_events
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @user }
+    end
   end
 
   def edit
