@@ -7,13 +7,14 @@
 
 Events:
   <br>
-  <% @events.each do |event| %>
+  <% @user.events.each do |event| %>
     <%= link_to event.title, event_path(event) %><br>
   <% end %>
 <% end %>
 
 <br>
-<!-- <%= link_to "See Events", events_path(@user) %> -->
+<%= link_to "View All Events", events_path %>
+<br>
 <%= link_to "Create New Event", new_event_path %>
 <br>
 <%= link_to "Edit Your Profile", edit_user_path(@user) %>
