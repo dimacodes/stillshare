@@ -11,9 +11,8 @@ class ImagesController < ApplicationController
 # add current_user later
   def create
     # @image = current_user.events.images.create(image_params)
-    # @event = Event.find_by(params[:event_id])
+    @event = Event.find_by(params[:event_id])
     @image = Image.new(image_params)
-    # byebug
     if @image.save
       redirect_to event_path(@image.event), notice: "#{@image.title} has been added."
     else
@@ -22,9 +21,14 @@ class ImagesController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(id: params[:event_id])
+    # @event = Event.find_by(id: params[:event_id])
     @image = Image.find_by(id: params[:id])
-    @comment = Comment.new
+    # @comment = Comment.new
+    @comments = @image.comments
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @image, adapter: :json }
+    end
   end
 
   def edit

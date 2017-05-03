@@ -1,14 +1,16 @@
 class EventsController < ApplicationController
 
   def index
-    if params[:user_id]
-      @events = Event.find(params[:user_id]).events
-    else
-      @events = Event.all
-    end
+    # if params[:user_id]
+    #   @events = Event.find(params[:user_id])
+    # else
+    #   @events = Event.all
+    # end
+    @user = User.find(params[:user_id])
+    @events = @user.events
     respond_to do |f|
       f.html { render :index }
-      f.json { render json: @events }
+      f.json { render json: @events, adapter: :json }
     end
   end
 
@@ -29,6 +31,10 @@ class EventsController < ApplicationController
     @event = Event.find_by(id: params[:id])
     # @image = Image.find_by(id: params[:id])
     @images = @event.images
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @event, adapter: :json }
+    end
   end
 
   def edit

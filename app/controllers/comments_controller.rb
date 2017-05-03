@@ -14,6 +14,10 @@ class CommentsController < ApplicationController
   def show
     @image = Image.find_by(id: params[:image_id])
     @comment = Comment.find_by(id: params[:id])
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @comment, adapter: :json }
+    end
   end
 
   def edit

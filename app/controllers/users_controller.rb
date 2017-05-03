@@ -23,11 +23,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @events = Event.all
+    @events = @user.events
     # @user.created_events
     respond_to do |f|
       f.html { render :show }
-      f.json { render json: @user }
+      f.json { render json: @user, adapter: :json }
     end
   end
 

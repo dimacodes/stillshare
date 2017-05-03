@@ -23,6 +23,10 @@ class TagsController < ApplicationController
     # @image = Image.find_by(id: params[:id])
     # @images = @event.images
     @images = @tag.images
+    respond_to do |f|
+      f.html { render :show }
+      f.json { render json: @tag, adapter: :json }
+    end
 
   end
 
