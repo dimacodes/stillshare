@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   resources :users
 
 # clean up
-  # resources :users, only: [:show] do
-  #   resources :events, only: [:index, :show]
-  # end
+  resources :users, only: [:show] do
+    resources :events, only: [:new, :index, :create, :show]
+  end
 
   resources :events, only: [:show] do
     resources :images
