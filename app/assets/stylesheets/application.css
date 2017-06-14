@@ -14,3 +14,13 @@
  *= require_tree .
  *= require_self
  */
+
+ /*html {
+ 	background: url("orga_mecha.jpeg") no-repeat center center fixed;
+ 	min-height: 100%;
+ 	-webkit-background-size: cover;
+ 	   -moz-background-size: cover;
+ 	     -o-background-size: cover;
+ 	        background-size: cover;
+   transition: background-image 0.7s linear;
+ }*/

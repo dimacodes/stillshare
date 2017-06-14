@@ -6,6 +6,7 @@ class EventsController < ApplicationController
     # else
     #   @events = Event.all
     # end
+
     @user = User.find(params[:user_id])
     @events = @user.events
     respond_to do |f|
@@ -28,6 +29,7 @@ class EventsController < ApplicationController
   end
 
   def show
+
     @event = Event.find_by(id: params[:id])
     # @image = Image.find_by(id: params[:id])
     @images = @event.images

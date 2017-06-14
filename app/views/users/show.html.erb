@@ -5,19 +5,27 @@
   You don't have any events yet.
 <% else %>
 
-<!-- Events:
+Events:
   <br>
-  <% @user.events.each do |event| %>
+  <!-- <% @user.events.each do |event| %>
     <%= link_to event.title, event_path(event) %><br>
-  <% end %>
-<% end %> -->
+  <% end %> -->
+<% end %>
 
-<p>
-  <%= link_to "Load Events", user_events_path(@user), :class => "load_events" %>
-</p>
+<!-- <p>
+  <%= link_to "View Events", user_events_path(@user), :class => "view_events" %>
+</p> -->
 
-<div class="events">
+<div class="all_events">
 </div>
+
+<div class="event">
+</div>
+
+<div class="event_images">
+</div>
+
+
 
 <br>
 <%= link_to "View All Events", events_path %>
