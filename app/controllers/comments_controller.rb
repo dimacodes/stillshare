@@ -5,9 +5,12 @@ class CommentsController < ApplicationController
   end
 
   def create
-    comment = current_user.comments.build(comment_params)
-    if comment.save
-      redirect_to image_path(comment.image), notice: "Your comment has been added."
+    @image = Image.find_by(id: params[:image_id])
+    # byebug
+    @comment = current_user.comments.build(comment_params)
+    # byebug
+    if @comment.save
+      redirect_to @image, notice: "Your comment has been added."
     end
   end
 

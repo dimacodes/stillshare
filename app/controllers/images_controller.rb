@@ -23,8 +23,10 @@ class ImagesController < ApplicationController
   def show
     # @event = Event.find_by(id: params[:event_id])
     @image = Image.find_by(id: params[:id])
-    # @comment = Comment.new
+    @comment = Comment.new(image_id: params[:id])
     @comments = @image.comments
+    # byebug
+    # @comment = @image.comments.build
     respond_to do |f|
       f.html { render :show }
       f.json { render json: @image, adapter: :json }
