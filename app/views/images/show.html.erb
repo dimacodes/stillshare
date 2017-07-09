@@ -29,7 +29,7 @@ Image Comments:
 <% end %>
 </div>
 <br>
-<%= link_to "Add Comment", new_image_comment_path(@image, @image.comments.build) %>
+<!-- <%= link_to "Add Comment", new_image_comment_path(@image, @image.comments.build) %> -->
 
 <%= form_for ([@image, @comment]) do |f| %>
 <%= f.label "Comment" %>
@@ -39,7 +39,7 @@ Image Comments:
 <%= f.submit %>
 <% end %>
 
-<br></br>
+<br>
 Image Tags: <% @image.tags.each do |tag| %>
   <%= link_to tag.content, "/images/#{@image.id}/tags/#{tag.id}" %>
 <% end %>
