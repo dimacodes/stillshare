@@ -10,11 +10,12 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     # byebug
     if @comment.save
-      # respond_to do |f|
-      #   f.html { render "comments/show", layout: false, notice: "Your comment has been added." }
-      #   f.json { }
-          render json: @comment, adapter: :json
-      # end
+      respond_to do |f|
+        # original rails path
+        f.html { redirect_to image_path(@comment.image), notice: "Your comment has been added." }
+        f.json { render json: @comment, adapter: :json }
+    #   f.html { render "comments/show", layout: false, notice: "Your comment has been added." }
+      end
       # redirect_to @image, notice: "Your comment has been added."
     end
   end

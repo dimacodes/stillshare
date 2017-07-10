@@ -19,14 +19,18 @@ Image Description:
 Image Comments:
 <br>
 <div class="comments">
+
 <% @image.comments.each do |comment| %>
+<!-- <ul> -->
  <%= comment.user.name %> says:
  <% if current_user.id == comment.user.id %>
   <%= link_to comment.content, image_comment_path(comment.image, comment) %>
   <% else %>
   <%= comment.content %>
   <% end %>
+    <!-- </ul> -->
 <% end %>
+
 </div>
 <br>
 <!-- <%= link_to "Add Comment", new_image_comment_path(@image, @image.comments.build) %> -->
